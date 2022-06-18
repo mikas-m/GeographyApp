@@ -1,0 +1,510 @@
+Screen:
+
+    MDToolbar:
+        id: toolbar
+        pos_hint: {"top": 1}
+        elevation: 10
+        title: "Stanovništvo"
+        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+
+	MDBottomAppBar:
+		MDToolbar:
+            title: "Probna verzija"
+            icon: "earth"
+            type: "bottom"
+            mode: "end"
+
+
+	MDNavigationLayout:
+        x: toolbar.height
+
+        ScreenManager:
+            id: screen_manager
+
+
+			Screen:
+				name: "izbornik"
+				MDLabel:
+					text: "Dobrodošli!"
+					halign: "center"
+
+            Screen:
+                name: "gustoca"
+
+
+				MDFloatLayout:
+					orientation: "vertical"
+					spacing: 10
+					padding: 10
+
+					MDTextField:
+						id: P_gust
+						hint_text: "Broj stanovnika"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .85, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost"
+                        line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextField:
+						id: A
+						hint_text: "Površina"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .75, "x": .02}
+						input_filter: "float"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost veću od 0"
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextButton:
+						text: "Izračunaj gustoću naseljenosti"
+						custom_color: 1, 0, 0, 1
+						size_hint: (.5, None)
+						pos_hint: {"x": .25, "top": .65}
+						on_press: app.gust()
+
+					MDIconButton:
+						icon: "information"
+						pos_hint: {"right": .92, "top": .675}
+						on_press: app.gusto_info()
+					MDIconButton:
+						icon: "school"
+						pos_hint: {"right": 1, "top": .675}
+						on_press: app.gusto_vise()
+
+
+
+            Screen:
+                name: "prir_kretanje"
+
+				MDFloatLayout:
+					orientation: "vertical"
+					spacing: 10
+					padding: 10
+
+
+					MDTextField:
+						id: N
+						hint_text: "Rodnost"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .87, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost."
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextField:
+						id: M
+						hint_text: "Smrtnost"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .775, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost."
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextButton:
+						text: "Izračunaj prirodno kretanje"
+						custom_color: 1, 0, 0, 1
+						size_hint: (.5, None)
+						pos_hint: {"x": .25, "top": .69}
+						on_press: app.prir()
+					MDIconButton:
+						icon: "information"
+						pos_hint: {"right": .92, "top": .71}
+                        on_press: app.prirodno_info()
+					MDIconButton:
+						icon: "school"
+						pos_hint: {"right": 1, "top": .71}
+						on_press: app.prirodno_vise()
+
+
+
+					MDTextField:
+						id: D
+						hint_text: "Broj umrle dojenčadi"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .655, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost."
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextButton:
+						text: "Izračunaj smrtnost dojenčadi"
+						custom_color: 1, 0, 0, 1
+						size_hint: (.5, None)
+						pos_hint: {"x": .235, "top": .57}
+						on_press: app.doj()
+					MDIconButton:
+						icon: "information"
+						pos_hint: {"right": .92, "top": .59}
+						on_press: app.doj_info()
+					MDIconButton:
+						icon: "school"
+						pos_hint: {"right": 1, "top": .59}
+						on_press: app.doj_vise()
+
+					MDTextField:
+						id: Z
+						hint_text: "Živorođeni"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .535, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost."
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextButton:
+						text: "Izračunaj vitalni indeks"
+						custom_color: 1, 0, 0, 1
+						size_hint: (.5, None)
+						pos_hint: {"x": .27, "top": .45}
+						on_press: app.vit()
+					MDIconButton:
+						icon: "information"
+						pos_hint: {"right": .92, "top": .47}
+						on_press: app.vit_info()
+					MDIconButton:
+						icon: "school"
+						pos_hint: {"right": 1, "top": .47}
+						on_press: app.vit_vise()
+
+					MDTextField:
+						id: f
+						hint_text: "Broj stanovništva u plodnoj dobi (15-49)"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .415, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost."
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextButton:
+						text: "Izračunaj stopu ukupnog fertiliteta"
+						custom_color: 1, 0, 0, 1
+						size_hint: (.5, None)
+						pos_hint: {"x": .205, "top": .33}
+						on_press: app.fert()
+					MDIconButton:
+						icon: "information"
+						pos_hint: {"right": .92, "top": .35}
+						on_press: app.fert_info()
+					MDIconButton:
+						icon: "school"
+						pos_hint: {"right": 1, "top": .35}
+						on_press: app.fert_vise()
+
+					MDTextField:
+						id: P_kret
+						hint_text: "Broj stanovnika"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .265, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost."
+						line_color_focus: 52/255, 235/255, 67/255, 1
+
+
+
+            Screen:
+                name: "pros_kretanje"
+
+				MDFloatLayout:
+					orientation: "vertical"
+					spacing: 10
+					padding: 10
+
+					MDTextField:
+						id: I
+						hint_text: "Imigracija"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .85, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost."
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextField:
+						id: E
+						hint_text: "Emigracija"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .75, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost."
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextField:
+						id: P_kreta
+						hint_text: "Broj stanovnika"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .65, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost."
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextButton:
+						text: "Izračunaj prostorno kretanje"
+						custom_color: 1, 0, 0, 1
+						size_hint: (.5, None)
+						pos_hint: {"x": .25, "top": .55}
+						on_press: app.pros()
+					MDIconButton:
+						icon: "information"
+						pos_hint: {"right": .92, "top": .57}
+						on_press: app.pros_info()
+					MDIconButton:
+						icon: "school"
+						pos_hint: {"right": 1, "top": .57}
+						on_press: app.pros_vise()
+
+
+
+            Screen:
+                name: "tip"
+
+				MDFloatLayout:
+					orientation: "vertical"
+					spacing: 10
+					padding: 10
+
+
+					MDTextField:
+						id: N_tip
+						hint_text: "Rodnost"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .87, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost."
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextField:
+						id: M_tip
+						hint_text: "Smrtnost"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .77, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost."
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextField:
+						id: I_tip
+						hint_text: "Imigracija"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .67, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost."
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextField:
+						id: E_tip
+						hint_text: "Emigracija"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .57, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost."
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextField:
+						id: bspg
+						hint_text: "Broj stanovnika"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .47, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost veću od 0"
+						line_color_focus: 52/255, 235/255, 67/255, 1
+
+					MDTextButton:
+						text: "Izračunaj opće kretanje"
+						custom_color: 1, 0, 0, 1
+						size_hint: (.5, None)
+						pos_hint: {"x": .25, "top": .37}
+						adaptive_size: True
+						on_press: app.tipo()
+					MDTextButton:
+						text: "Definiraj opće kretanje"
+						custom_color: 1, 0, 0, 1
+						size_hint: (.5, None)
+						pos_hint: {"x": .25, "top": .30}
+						adaptive_size: True
+						on_press: app.tipo1()
+					MDIconButton:
+						icon: "information"
+						pos_hint: {"right": .92, "top": .39}
+						on_press: app.tip_info()
+					MDIconButton:
+						icon: "school"
+						pos_hint: {"right": 1, "top": .39}
+						on_press: app.tip_vise()
+					MDIconButton:
+						icon: "information"
+						pos_hint: {"right": .92, "top": .32}
+						on_press: app.tip_info1()
+					MDIconButton:
+						icon: "school"
+						pos_hint: {"right": 1, "top": .32}
+						on_press: app.tip_vise1()
+
+            Screen:
+                name: "strukture"
+
+				MDFloatLayout:
+					orientation: "vertical"
+					spacing: 10
+					padding: 10
+
+
+					MDTextField:
+						id: ZS
+						hint_text: "Broj ženskog stanovništva"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .87, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost."
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextField:
+						id: MS
+						hint_text: "Broj muškog stanovništva"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .77, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost."
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextButton:
+						text: "Maskulinitet i feminitet"
+						custom_color: 1, 0, 0, 1
+						size_hint: (.5, None)
+						pos_hint: {"x": .25, "top": .67}
+						on_press: app.mask()
+					MDIconButton:
+						icon: "information"
+						pos_hint: {"right": .92, "top": .695}
+						on_press: app.masko_info()
+					MDIconButton:
+						icon: "school"
+						pos_hint: {"right": 1, "top": .695}
+						on_press: app.masko_vise()
+
+					MDTextField:
+						id: ML
+						hint_text: "Broj mladog stanovništva"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .63, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Mlado = 0-14 godina"
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextField:
+						id: ST
+						hint_text: "Broj starog stanovništva"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .53, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Staro = 65+"
+						line_color_focus: 52/255, 235/255, 67/255, 1
+					MDTextField:
+						id: P_struk
+						hint_text: "Broj stanovnika"
+						size_hint: (.95, None)
+						multiline: False
+						pos_hint: {"top": .43, "x": .02}
+						input_filter: "int"
+						helper_text_mode: "on_focus"
+						helper_text: "Unesi brojčanu vrijednost veću od 0"
+						line_color_focus: 52/255, 235/255, 67/255, 1
+
+
+					MDTextButton:
+						text: "Izračunaj indeks starosti"
+						custom_color: 1, 0, 0, 1
+						size_hint: (.5, None)
+						pos_hint: {"x": .235, "top": .33}
+						on_press: app.ind_star()
+					MDIconButton:
+						icon: "information"
+						pos_hint: {"right": .92, "top": .35}
+						on_press: app.dobn_info()
+					MDIconButton:
+						icon: "school"
+						pos_hint: {"right": 1, "top": .35}
+						on_press: app.dobn_vise()
+
+					MDTextButton:
+						text: "Izračunaj stupanj ostarjelosti"
+						custom_color: 1, 0, 0, 1
+						size_hint: (.5, None)
+						pos_hint: {"x": .20, "top": .28}
+						on_press: app.stup_ost()
+					MDIconButton:
+						icon: "information"
+						pos_hint: {"right": .92, "top": .3}
+						on_press: app.stup_info()
+					MDIconButton:
+						icon: "school"
+						pos_hint: {"right": 1, "top": .3}
+						on_press: app.stup_vise()
+
+
+
+
+
+        MDNavigationDrawer:
+            id: nav_drawer
+
+            Izbornik:
+                screen_manager: screen_manager
+                nav_drawer: nav_drawer
+
+<Izbornik>:
+
+    ScrollView:
+
+        MDList:
+
+            OneLineListItem:
+                text: "Gustoća naseljenosti"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "gustoca"
+
+            OneLineListItem:
+                text: "Prirodno kretanje stanovništva"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "prir_kretanje"
+
+            OneLineListItem:
+                text: "Prostorno kretanje stanovništva"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "pros_kretanje"
+
+            OneLineListItem:
+                text: "Tip općeg kretanja stanovništva"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "tip"
+
+            OneLineListItem:
+                text: "Strukture stanovništva"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "strukture"
+
