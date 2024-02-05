@@ -1,6 +1,6 @@
 from kivy.config import Config
 Config.set('graphics', 'resizable', False)
-Config.set('input', 'mouse', 'mouse' 'multitouch_on_demand')
+Config.set('input', 'mouse' 'multitouch_on_demand')
 from kivy.core.window import Window
 Window.size = (500, 600)
 from kivy.lang import Builder
